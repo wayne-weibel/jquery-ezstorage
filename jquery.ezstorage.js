@@ -73,7 +73,7 @@ $('document').ready(function () {
  * @param value   : the value to store; any type; n/a with get or remove
  * @param options : options for setting the key:value; Optional - n/a with enabled
  *            - {
- *                  expires: Numeric number of days or Date object,
+ *                  expires: Numeric number of days or Date object (preferred),
  *                  persist: Boolean; whether to place value in localStorage despite expires being set
  *                  path: String; only used if cookie,
  *                  full: Boolean; whether to return the full object stored by ezstorage or just value
@@ -85,8 +85,8 @@ $('document').ready(function () {
  * @return
  * - 'enabled'   = Boolean
  * - 'get'       = null or stored value; will be Object if Scalar set with an expires
- * - 'set'       = stored value; 
- * - 'remove'    = always true
+ * - 'set'       = stored value as a String
+ * - 'remove'    = always true, unless an error occured
  */
     var ezs = $.ezstorage =
     function EZStorage(action, key, value, options) {
@@ -96,11 +96,11 @@ $('document').ready(function () {
         if ( options.expires ) {
             if (options.expires instanceof Date) {/* do nothing */}
             else if (typeof options.expires === 'number') {
-                options.expires = new Date(new Date().setDate(new Date().getDate() - options.expire));
+                options.expires = new Date(new Date().setTime(new Date.getTime() + ((options.expires*24)*60*60*1000)));
             }
             else {
                 // some other value is placed in options.expires, attempt to make a Date object
-                try { options.expire = new Date(options.expires); } catch(err) { delete options.expires; }
+                try { options.expires = new Date(options.expires); } catch(err) { delete options.expires; }
             }
         }
 
