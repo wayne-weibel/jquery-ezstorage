@@ -1,9 +1,9 @@
 /**
  * ----------------------------- EZStorage -------------------------------------
  * Simple HTML5 Storage wrapper to save data on the browser side
- * Defaults to cookies (if enabled) if Storage is not supported.
+ * Defaults to cookies (if enabled) if HTML Storage is not supported.
  *
- * Version: 1.2.0
+ * Version: 1.2.2
  *
  * Licensed under MIT-style license:
  * http://www.opensource.org/licenses/mit-license.php
@@ -73,7 +73,7 @@ $('document').ready(function () {
  * @param value   : the value to store; any type; n/a with get or remove
  * @param options : options for setting the key:value; Optional - n/a with enabled
  *            - {
- *                  expires: Numeric number of days or Date object (preferred),
+ *                  expires: Date object (preferred), Numeric number of days, or parseable date String
  *                  persist: Boolean; whether to place value in localStorage despite expires being set
  *                  path: String; only used if cookie,
  *                  full: Boolean; whether to return the full object stored by ezstorage or just value
@@ -96,7 +96,7 @@ $('document').ready(function () {
         if ( options.expires ) {
             if (options.expires instanceof Date) {/* do nothing */}
             else if (typeof options.expires === 'number') {
-                options.expires = new Date(new Date().setTime(new Date.getTime() + ((options.expires*24)*60*60*1000)));
+                options.expires = new Date(new Date().setTime(new Date().getTime() + ((options.expires*24)*60*60*1000)));
             }
             else {
                 // some other value is placed in options.expires, attempt to make a Date object

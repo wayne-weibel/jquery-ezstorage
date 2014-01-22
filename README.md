@@ -7,7 +7,7 @@ Functionalities:
 
 - Store data easily, encode/decode it with JSON automatically.
 - Automatcially handles conversion of Number and String to Date for expiration values.
-- Dynamically loads [jquery.cookie][1] and [JSON][2] libraries if necessary.
+- Attempts to dynamically load [jquery.cookie][1] and [JSON][2] libraries if necessary.  These should be included directly to avoid complications with browsers and data transfer.
 [1]: https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js
 [2]: http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js
 
@@ -25,7 +25,7 @@ Usage
  - get/set key:value pairs (in Storage or as a cookie)
  - removes key:value pairs (in Storage or as a cookie)
  
- @param String __action__
+@param String __action__
  
    - the action to perform:
     - 'enabled' = verify that a storage option is possible
@@ -48,7 +48,7 @@ Usage
   - during 'get', check is made for expired; null returned if expired
   - if expires omitted, sessionStorage used
   - Object:
-	- expires: Numeric number of days or Date object,
+	- expires: Date object (preferred), Numeric number of days, or parseable date String
     - persist: Boolean; whether to place value in localStorage despite expires being set
     - path: String; only used if cookie,
     - full: Boolean; whether to return the full object stored by ezstorage or just value

@@ -1,6 +1,6 @@
 {
     "name": "ezstorage",
-    "version": "1.2.0",
+    "version": "1.2.2",
     "title": "jQuery EZStorage",
     "description": "jQuery plugin for simple interaction with HTML5 Storage, local and session, and/or cookies.",
     "keywords": [ "storage", "html5", "localStorage", "sessionStorage", "cookie" ],
