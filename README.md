@@ -7,7 +7,7 @@ Functionalities:
 
 - Store data easily, encode/decode it with JSON automatically.
 - Automatcially handles conversion of Number and String to Date for expiration values.
-- Attempts to dynamically load [jquery.cookie][1] and [JSON][2] libraries if necessary.  These should be included directly to avoid complications with browsers and data transfer.
+- [jquery.cookie][1] and [JSON][2] should be included directly to avoid complications with browsers and data transfer.
 [1]: https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js
 [2]: http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js
 
@@ -17,16 +17,16 @@ Usage
 -------------------------
 
     $.ezstorage(action, key, value, options)
-    
+
  overloaded function to manage 'storage'
- 
+
  - checks if local/session Storage is implemented in the browser
  - checks if cookies are enabled
  - get/set key:value pairs (in Storage or as a cookie)
  - removes key:value pairs (in Storage or as a cookie)
- 
+
 @param String __action__
- 
+
    - the action to perform:
     - 'enabled' = verify that a storage option is possible
     - 'get' = get a value from storage; returns null, Scalar, Object
@@ -52,15 +52,15 @@ Usage
     - persist: Boolean; whether to place value in localStorage despite expires being set
     - path: String; only used if cookie,
     - full: Boolean; whether to return the full object stored by ezstorage or just value
-            
+
 @return Mixed
 
   - 'enabled' = Boolean
   - 'get' = null or stored value; will be Object if Scalar set with an expires
-  - 'set' = stored value; 
+  - 'set' = stored value;
   - 'remove' = always True, if not a javascript error occured.
-  
-<br />    
+
+<br />
 Shorthand Functions
 -------------------------
 ### `enabled()`
@@ -75,7 +75,7 @@ Get an item from a storage.  Searches localStorage, sessionStorage, and cookies.
     $.ezstorage.get('foo', {full:true}); // return {ezstorage:true …} not just 'value'
 
 ### `set(key, value, options = {})`
-Set an item in a storage. If options.expire or options.persist are set value is stored in localStorage, else sessionStorage/cookie.  
+Set an item in a storage. If options.expire or options.persist are set value is stored in localStorage, else sessionStorage/cookie.
 - __value__ is stored as an object: `{ezstorage:true, <options>, value:<value>}`
 
 
@@ -87,14 +87,14 @@ Set an item in a storage. If options.expire or options.persist are set value is 
 Delete an item from all storages (local, session, and cookie).  Options only used if being stored as a cookie.
 
     storage.remove('foo');
-    
+
 <br />
 Global Object
 -------------------------
 
      $.ezstorage.defaultSettings(); // return settings to {ezstorage: true, path:'/'};
      $.ezstorage.settings = {<your settings>}; // no longer need to pass in function
-     
+
 <br />
 Compatibility
 -------------

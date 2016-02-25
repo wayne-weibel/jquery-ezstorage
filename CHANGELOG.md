@@ -5,18 +5,22 @@ jQuery EZStorage is a plugin that simplifies access to HTML5 storages & cookies.
 
 CHANGELOG
 -------------------------
-###1.2.2 
+###1.2.3
+packaged for bower and npm
+removed auto-inclusion of jquery.cookie and JSON libraries
+
+###1.2.2
 damn typos and some more commenting
 
-###1.2.1 
+###1.2.1
 numeric options.expires value now being set correctly when decimal
 values passed, eg. .25 or 20.662; also clarified some commenting
 
-###1.2.0 
+###1.2.0
 added settings property to global object, and options parameter to functions;  automatic Date parsing for expiration values.
 
-###1.1.0 
+###1.1.0
 added shorthand version of functions
 
-###1.0.0 
+###1.0.0
 Initial version

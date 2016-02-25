@@ -3,7 +3,7 @@
 Simple HTML5 Storage wrapper to save data on the browser side
 Defaults to cookies (if enabled) if HTML Storage is not supported.
 
-Version: 1.2.2
+Version: 1.2.3
 
 Licensed under MIT-style license:<br>
 [http://www.opensource.org/licenses/mit-license.php][1]
@@ -11,7 +11,7 @@ Licensed under MIT-style license:<br>
 
 <br>
 
-Copyright (c) 2013 Wayne Weibel
+Copyright (c) 2013-2016 Wayne Weibel
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

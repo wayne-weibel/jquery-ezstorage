@@ -1,0 +1,32 @@
+{
+  "name": "jquery-ezstorage",
+  "version": "1.2.3",
+  "description": "plugin for simple interaction with HTML5 Storage, local and session, and/or cookies",
+  "main": "jquery.ezstorage.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wayne-weibel/jquery-ezstorage.git"
+  },
+  "keywords": [
+    "storage",
+    "html5",
+    "localStorage",
+    "sessionStorage",
+    "cookie"
+  ],
+  "author": "Wayne Weibel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wayne-weibel/jquery-ezstorage/issues"
+  },
+  "homepage": "https://github.com/wayne-weibel/jquery-ezstorage#readme",
+  "dependencies": {
+    "jquery.cookie": "1.4.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-uglify": "^0.11.0"
+  }
+}

@@ -40,20 +40,6 @@ $('document').ready(function () {
             window.JSON && (window.JSON.stringify || window.JSON.encode) ||
             $.toJSON
     };
-    
-    // ensure that JSON.parse and JSON.strinigify are available
-    if(!('parse' in JSON) || !('stringify' in JSON)){
-        $.getScript('http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js', function() {
-            console.log('EZStorage: loaded JSON library dynamically');
-        });
-    }
-
-    // include jquery.cookie ($.cookie) library
-    if ( typeof(jQuery.cookie) === 'undefined' ) {
-        $.getScript('https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js', function() {
-            console.log('EZStorage: loaded jQuery.cookie library dynamically');
-        });
-    }
 });
 
 /**
@@ -90,7 +76,7 @@ $('document').ready(function () {
  */
     var ezs = $.ezstorage =
     function EZStorage(action, key, value, options) {
-    
+
         // establish options - set expires to date object if necessary
         options = $.extend({}, ezs.settings, options);
         if ( options.expires ) {
@@ -139,7 +125,7 @@ $('document').ready(function () {
                         }
                     }
                 }
-                
+
                 // check for a cookie version if not found in storage
                 return $.cookie(key);
                 break;
@@ -186,5 +172,5 @@ $('document').ready(function () {
         defaultSettings : function() { this.settings = {ezstorage: true, path:'/'}; },
         settings : {ezstorage: true, path: '/'}
     });
-    
+
 })(jQuery);

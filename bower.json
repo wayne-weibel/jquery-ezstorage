@@ -1,0 +1,28 @@
+{
+  "name": "jquery-ezstorage",
+  "description": "plugin for simple interaction with HTML5 Storage, local and session, and/or cookies",
+  "main": "jquery.ezstorage.js",
+  "authors": [
+    "Wayne Weibel"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "storage",
+    "html5",
+    "localStorage",
+    "sessionStorage",
+    "cookie"
+  ],
+  "homepage": "https://github.com/wayne-weibel/jquery-ezstorage",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery.cookie": "jquery-cookie#1.4.1"
+  }
+}
