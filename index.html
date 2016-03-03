@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="JQuery EZstorage : jQuery EZStorage Plugin: manages browser side storage of data">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>JQuery EZstorage</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/wayne-weibel/jquery-ezstorage">View on GitHub</a>
+
+          <h1 id="project_title">JQuery EZstorage</h1>
+          <h2 id="project_tagline">jQuery EZStorage Plugin: manages browser side storage of data</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/wayne-weibel/jquery-ezstorage/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/wayne-weibel/jquery-ezstorage/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="jquery-ezstorage" class="anchor" href="#jquery-ezstorage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>jQuery EZStorage</h1>
+
+<p>jQuery EZStorage is a plugin that simplifies access to HTML5 storages &amp; cookies.  The plugin handles determining where and how to store and retrieve data; in HTML5 Storage if it is available, or defaults to cookies.</p>
+
+<p>Functionalities:</p>
+
+<ul>
+<li>Store data easily, encode/decode it with JSON automatically.</li>
+<li>Automatcially handles conversion of Number and String to Date for expiration values.</li>
+<li>
+<a href="https://raw.github.com/carhartl/jquery-cookie/master/jquery.cookie.js">jquery.cookie</a> and <a href="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js">JSON</a> should be included directly to avoid complications with browsers and data transfer.</li>
+</ul>
+
+<p><br></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<pre><code>$.ezstorage(action, key, value, options)
+</code></pre>
+
+<p>overloaded function to manage 'storage'</p>
+
+<ul>
+<li>checks if local/session Storage is implemented in the browser</li>
+<li>checks if cookies are enabled</li>
+<li>get/set key:value pairs (in Storage or as a cookie)</li>
+<li>removes key:value pairs (in Storage or as a cookie)</li>
+</ul>
+
+<p><a href="https://github.com/param" class="user-mention">@param</a> String <strong>action</strong></p>
+
+<ul>
+<li>the action to perform:
+
+<ul>
+<li>'enabled' = verify that a storage option is possible</li>
+<li>'get' = get a value from storage; returns null, Scalar, Object</li>
+<li>'set' = set a key:value pair; value converted to JSON String if Object</li>
+<li>'remove' = delete a key:value pair</li>
+</ul>
+</li>
+</ul>
+
+<p><a href="https://github.com/param" class="user-mention">@param</a> String <strong>key</strong></p>
+
+<ul>
+<li>the key to store; n/a with enabled</li>
+</ul>
+
+<p><a href="https://github.com/param" class="user-mention">@param</a> Mixed <strong>value</strong></p>
+
+<ul>
+<li>the value to store; n/a with get or remove</li>
+</ul>
+
+<p><a href="https://github.com/param" class="user-mention">@param</a> Object <strong>options</strong></p>
+
+<ul>
+<li>options for setting the key:value; Optional - n/a with enabled</li>
+<li>if using HTMLStorage 'value' converted to an Object; value.expires = expireDate, etc.</li>
+<li>during 'get', check is made for expired; null returned if expired</li>
+<li>if expires omitted, sessionStorage used</li>
+<li>Object:
+
+<ul>
+<li>expires: Date object (preferred), Numeric number of days, or parseable date String</li>
+<li>persist: Boolean; whether to place value in localStorage despite expires being set</li>
+<li>path: String; only used if cookie,</li>
+<li>full: Boolean; whether to return the full object stored by ezstorage or just value</li>
+</ul>
+</li>
+</ul>
+
+<p><a href="https://github.com/return" class="user-mention">@return</a> Mixed</p>
+
+<ul>
+<li>'enabled' = Boolean</li>
+<li>'get' = null or stored value; will be Object if Scalar set with an expires</li>
+<li>'set' = stored value;</li>
+<li>'remove' = always True, if not a javascript error occured.</li>
+</ul>
+
+<p><br></p>
+
+<h2>
+<a id="shorthand-functions" class="anchor" href="#shorthand-functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Shorthand Functions</h2>
+
+<h3>
+<a id="enabled" class="anchor" href="#enabled" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>enabled()</code>
+</h3>
+
+<p>Check whether a storage method is available; HTML5 Storage or cookies</p>
+
+<pre><code>$.ezstorage.enabled();
+</code></pre>
+
+<h3>
+<a id="getkey-options--" class="anchor" href="#getkey-options--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>get(key, options = {})</code>
+</h3>
+
+<p>Get an item from a storage.  Searches localStorage, sessionStorage, and cookies.</p>
+
+<pre><code>$.ezstorage.get('foo');
+$.ezstorage.get('foo', {full:true}); // return {ezstorage:true …} not just 'value'
+</code></pre>
+
+<h3>
+<a id="setkey-value-options--" class="anchor" href="#setkey-value-options--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>set(key, value, options = {})</code>
+</h3>
+
+<p>Set an item in a storage. If options.expire or options.persist are set value is stored in localStorage, else sessionStorage/cookie.</p>
+
+<ul>
+<li>
+<p><strong>value</strong> is stored as an object: <code>{ezstorage:true, &lt;options&gt;, value:&lt;value&gt;}</code></p>
+
+<p>$.ezstorage.set('foo', 'value');
+$.ezstorage.set('foo', 'value', {expires:3});
+$.ezstorage.set('foo', 'value', {persist:true});</p>
+</li>
+</ul>
+
+<h3>
+<a id="removekey-options--" class="anchor" href="#removekey-options--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>remove(key, options = {})</code>
+</h3>
+
+<p>Delete an item from all storages (local, session, and cookie).  Options only used if being stored as a cookie.</p>
+
+<pre><code>storage.remove('foo');
+</code></pre>
+
+<p><br></p>
+
+<h2>
+<a id="global-object" class="anchor" href="#global-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Global Object</h2>
+
+<pre><code> $.ezstorage.defaultSettings(); // return settings to {ezstorage: true, path:'/'};
+ $.ezstorage.settings = {&lt;your settings&gt;}; // no longer need to pass in function
+</code></pre>
+
+<p><br></p>
+
+<h2>
+<a id="compatibility" class="anchor" href="#compatibility" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compatibility</h2>
+
+<p>JQuery EZStroage is compatible with all browsers that support (and have enabled) storage/cookies.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">JQuery EZstorage maintained by <a href="https://github.com/wayne-weibel">wayne-weibel</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
